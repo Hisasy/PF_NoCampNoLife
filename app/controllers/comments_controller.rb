@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     else
       render 'posts/show'
     end
-
   end
 
   def destroy
@@ -18,7 +17,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
   def comment_params
     params.require(:comment).permit(:comment)
   end

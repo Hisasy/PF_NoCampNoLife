@@ -1,3 +1,368 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// <-----------post-new----------->
+.post-form-title-box {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.post-form-title {
+  text-align: center;
+  margin-top: 50px;
+  width: auto;
+  font-size: 30px;
+}
+
+.post-form-sub-title {
+  text-align: center;
+  margin-top: 20px;
+  width: auto;
+  font-size: 15px;
+}
+
+.post-form-area {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background: #f7f7f7;
+  min-height: 500px;
+  text-align: center;
+}
+
+.post-form-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.main-title-form {
+  padding-top: 30px;
+}
+
+.date-form {
+  padding-top: 30px;
+}
+
+.location-form {
+  padding-top: 30px;
+}
+
+.sub-title-form {
+  padding-top: 30px;
+}
+
+.image-form {
+  padding-top: 30px;
+}
+
+.body-form {
+  padding-top: 30px;
+}
+
+.submit-button {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+// <-----------slide-area----------->
+.slider-box {
+  position: relative;
+  box-shadow: 0 0 5px #ccc;
+  border: solid #cccccc;
+}
+
+
+
+
+.slider-box image {
+  width: 100px;
+  height: 80px;
+}
+
+.post-content-main-title {
+  // background-color: ;
+  padding: 14px 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.post-content-date {
+  color: #666;
+  font-size: 13px;
+  font-weight: 700;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.post-content-place {
+  color: #666;
+  font-size: 13px;
+  font-weight: 700;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.post-content-user {
+  padding-left: 10px;
+}
+
+.post-content-user a {
+  color: #666;
+  font-weight: 700;
+}
+
+.likes-button {
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+
+
+
+// <-----------post-index----------->
+.post-area {
+  margin-top: 100px;
+  margin-bottom: 120px;
+  background: #f7f7f7;
+  min-height: 500px;
+
+}
+
+.inner {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.post-area-title {
+  width: 100%;
+  // background-color: blue;
+  padding: 20px;
+  color: #333333;
+  text-align: center;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 5px;
+  grid-auto-rows: auto;
+}
+
+.post-box {
+  border: solid #CCCCCC 3px;
+  position: relative;
+  width: 306px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #ccc;
+  margin-bottom: 10px;
+  margin: 20px auto;
+}
+
+.background-image {
+  width: 100%;
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // position: relative;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
+}
+
+.background-image a img {
+  width: 300px;
+  height: 200px;
+}
+
+.post-date {
+  box-sizing: border-box;
+  // position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 10px;
+  color: #666;
+  font-size: 13px;
+  // text-shadow: 0 0 2px #666;
+  font-weight: 700;
+}
+
+.main-title {
+  background-color: #FFFFDD;
+  padding: 14px 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.post-place {
+  padding: 0 10px 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #666;
+}
+
+.post-like {
+  margin-left: 10px;
+}
+
+.user-name {
+  margin-left: 10px;
+  font-size: 15px;
+  color: #666;
+}
+
+.user-name a {
+  color: #666;
+  font-weight: 700;
+}
+
+.label-box {
+  top: 0;
+  right: 0;
+  position: absolute;
+  border-top: 35px solid #FA8072;
+  border-right: 35px solid #FA8072;
+  border-bottom: 35px solid transparent;
+  border-left: 35px solid transparent;
+  border-radius: 4px 0;
+}
+
+.label-name {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 15px;
+  margin-right: 6px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+// <-----------post-show----------->
+.post-show {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+.post-show-header {
+  width: 900px;
+  margin-top: 40px;
+  padding: 2px;
+  border-bottom: 3px solid #D3D3D3;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-show-main-title {
+  font-size: 25px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.post-show-user {
+  margin-left: 30px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.post-show-place-icon {
+  vertical-align: top;
+  text-align: left;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.place-icon-image {
+  background-image: image-url('place.jpeg');
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-position: center center;
+  background-size: cover;
+}
+
+.post-show-place {
+  font-size: 16px;
+  font-weight: 500;
+  // color: #808080;
+}
+
+.date-icon-image {
+  background-image: image-url('date.jpeg');
+  // border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-position: center center;
+  background-size: cover;
+  margin-left: 30px;
+}
+
+.post-show-date {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.post-show-main {
+  margin: auto;
+  width: 900px;
+}
+
+.post-show-sub-title {
+  padding-top: 15px;
+  padding-left: 20px;
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.post-show-image-area {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+}
+
+.post-show-image-area > div {
+  margin: 20px auto;
+  background-color: #fff;
+}
+
+.post-show-body-area {
+  height: auto;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.buttons {
+  padding-left: 20px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.delete-button {
+  margin-left: 20px;
+}
+
+// <-----------post-edit----------->
+// .post-edit {
+//   height: auto;
+//   margin-bottom: 120px;
+// }
+
+// <-----------comment-area----------->
+.comment-area {
+  padding: 10px;
+  background: #f7f7f7;
+}
