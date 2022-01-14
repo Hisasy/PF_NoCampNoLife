@@ -244,7 +244,7 @@ header {
  font-size: 10px;
  text-decoration: none;
  font-family: 'YuGothic','Yu Gothic','Hiragino Kano Gothic ProN','ヒラギノ角ゴ ProN W3';
- margin-left: 2%;
+ margin-left: 30px;
  color: whitesmoke;
  text-align: center;
 }
@@ -515,8 +515,8 @@ footer{
 }
 
 .profile-image-box img {
- width: 50px;
- height: 50px;
+ width: 75px;
+ height: 75px;
 }
 
 .profile-name-box {
@@ -526,7 +526,7 @@ footer{
 }
 
 .profile-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   font-family: 'YuGothic','Yu Gothic','Hiragino Kano Gothic ProN','ヒラギノ角ゴ ProN W3';
  margin-top: 15px;
@@ -535,25 +535,25 @@ footer{
 .profile-introduction {
   margin-top: 15px;
   height: auto;
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .profile-place-box {
   width: 100px;
   height: 60px;
-  font-size: 5px;
+  font-size: 12px;
   padding-top: 15px;
   margin-right: 10px;
 }
 
 .user-show-buttons {
   margin-top: 15px;
-  font-size: 5px;
+  font-size: 10px;
 }
 
 .user-show-like-posts {
   margin-top: 5px;
-  font-size: 5px;
+  font-size: 10px;
 }
 
 .user-show-name {
@@ -567,8 +567,8 @@ footer{
 background-image: image-url('place.jpeg');
 border-radius: 50%;
 display: inline-block;
-width: 10px;
-height: 10px;
+width: 15px;
+height: 15px;
 background-position: center center;
 background-size: cover;
 }
