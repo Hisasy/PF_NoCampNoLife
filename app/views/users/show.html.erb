@@ -1,0 +1,75 @@
+<div class="user-show-main">
+
+<div class="user-show-header">
+  <div class="profile-image-box" style="float:left;">
+    <%= attachment_image_tag @user, :image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
+  </div>
+  <div class="profile-name-box" style="float:left;">
+    <div class="profile-name"><%= @user.name %></div>
+    <div class="profile-introduction"><%= @user.introduction %></div>
+  </div>
+  <div class="profile-place-box" style="float:right;">
+    <div class="user-show-place-icon-image"></div>
+    <%= @user.address %>
+    <% if user_signed_in? && @user.id == current_user.id %>
+      <div class="user-show-buttons"><%= link_to "会員情報を編集する", edit_user_path(@user) %></div>
+      <div class="user-show-like-posts"><%= link_to "いいねした投稿", likes_user_path(@user) %></div>
+    <% end %>
+  </div>
+</div>
+
+  <!--フォロワー数表示-->
+<div class="follow-area">
+  <ul style="width: 200px;">
+    <li>
+      <%= link_to followers_user_path(@user.id) do %>
+        フォロワー<span><%= @user.followers.count %>人</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to following_user_path(@user.id) do %>
+        フォロー<span><%= @user.following.count %>人</span>
+      <% end %>
+    </li>
+
+  </ul>
+
+  <!--フォロー数表示-->
+  <!--<div class="follow">-->
+
+  <!--</div>-->
+
+  <!--フォローボタン-->
+  <div>
+    <%= render "follow_form" %>
+  </div>
+</div>
+
+
+  <!--ユーザーの投稿一覧表示-->
+  <div class="user-show-post-area">
+    <div class="inner">
+      <% if user_signed_in? && @user.id == current_user.id %>
+        <h1 class="post-area-title">あなたの投稿一覧</h1>
+      <% else %>
+        <h1 class="post-area-title"><%= @user.name %>さんの投稿一覧</h1>
+      <% end %>
+      <div class="post-list">
+        <% @posts.each do |post| %>
+          <div class="post-box">
+            <div class="background-image">
+              <%= link_to image_tag(post.images[0].to_s, size: '300x200'), post_path(post.id) %>
+            </div>
+            <p class="main-title">「<%= post.main_title %>」</p>
+            <p class="post-place"><%= post.location %></p>
+            <% if post.date %>
+              <p class="post-date"><%= post.date.strftime('%Y年%m月%d日') %></p>
+            <% end %>
+            <div class="post-like" id="like_buttons_<%= post.id %>">
+              <%= render "likes/index_like", post: post %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

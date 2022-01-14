@@ -1,0 +1,14 @@
+<div class="user-quit">
+<h4 class="quit-title">退会お手続き</h4>
+
+<p class="quit-body">
+  退会お手続きを完了されますと、投稿やいいねの一部サービスが</br>
+  ご利用いただけなくなります。</br>
+  本当に退会してもよろしいですか？
+</p>
+
+<p class="quit-buttons">
+<%= link_to "退会する", users_out_path, method: :patch, data: { confirm: "【確認】本当に退会しますか？" } %>
+<span class="quit-button"><%= link_to "退会しない", user_path(current_user) %></span>
+</p>
+</div>
