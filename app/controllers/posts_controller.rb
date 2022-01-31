@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_action :correct_post,only: [:edit, :destroy]
+
   def index
     @post_5 = Post.last(5)
     @posts = Post.all.order(created_at: :desc)
@@ -37,6 +40,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to "/"
+  end
+
+  def correct_post
+        @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to "/"
+    end
   end
 
   private

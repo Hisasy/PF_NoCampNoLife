@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:likes]
+  before_action :correct_post,only: [:edit]
 
   def show
     @user = User.find(params[:id])
@@ -46,6 +47,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers
     render "show_follower"
+  end
+
+  def correct_post
+        @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to "/"
+    end
   end
 
   private
