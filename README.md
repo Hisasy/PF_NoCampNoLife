@@ -1,4 +1,4 @@
-# [No Camp No Life](http://no-camp-no-life.com/)aa
+# [No Camp No Life](http://no-camp-no-life.com/)
 
 ## サイト概要
 
