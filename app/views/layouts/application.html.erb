@@ -17,9 +17,16 @@
   <body>
     <header>
       <div class="header-top-content">
-        <%= link_to "/", class:"header-title" do %>
-          <div>No Camp No Life</div>
-          <div class="header-sub-title">- キャンプ専用SNS -</div>
+        <% if admin_signed_in? %>
+          <%= link_to "/admin/posts", class:"header-title" do %>
+            <div>No Camp No Life</div>
+            <div class="header-sub-title">- キャンプ専用SNS -</div>
+          <% end %>
+        <% else %>
+          <%= link_to "/", class:"header-title" do %>
+            <div>No Camp No Life</div>
+            <div class="header-sub-title">- キャンプ専用SNS -</div>
+          <% end %>
         <% end %>
 
         <div class="nav">
@@ -28,9 +35,12 @@
               <li><%= link_to "投稿する", new_post_path, class: "post-new" %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %></li>
               <li><%= link_to "マイページ", user_path(current_user.id), class: "mypage" %></li>
+            <% elsif admin_signed_in? %>
+              <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "logout" %></li>
             <% else %>
               <li><%= link_to "新規登録", new_user_registration_path, class: "sign-up" %></li>
               <li><%= link_to "ログイン", new_user_session_path, class: "login" %></li>
+              <li class="admin-login"><%= link_to "管理者ログイン", new_admin_session_path, class: "login" %></li>
             <% end %>
           </ul>
         </div>

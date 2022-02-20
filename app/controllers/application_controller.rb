@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
+  def require_permission
+    unless current_user || current_admin
+      redirect_to  new_user_session_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

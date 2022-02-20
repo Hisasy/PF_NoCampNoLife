@@ -1,0 +1,69 @@
+<!--<main>-->
+  <div class="sliderArea">
+    <div class="full-screen-o slider">
+      <% @post_5.each do |post| %>
+        <div class="slider-box">
+          <div class="slider-image">
+            <% if post.is_admin_deleted == false %>
+              <%= link_to image_tag(post.images[0].to_s), admin_post_path(post.id) %>
+            <% elsif post.is_admin_deleted == true %>
+              <%= image_tag 'white.png' %>
+            <% end %>
+          </div>
+          <div class="post-content">
+            <div class="post-content-main-title">
+              <% if post.is_admin_deleted == false %>
+                「<%= link_to post.main_title , admin_post_path(post.id) %>」
+              <% elsif post.is_admin_deleted == true %>
+                <div class="deleted-main-title"><%= link_to "(deleted)",admin_post_path(post.id) %></div>
+              <% end %>
+            </div>
+            <p class="post-content-place"><%= post.location %></p>
+            <% if post.date %>
+              <div class="post-content-date"><%= post.date.strftime('%Y年%m月%d日') %></div>
+            <% end %>
+            <div class="post-content-user">投稿者：<%= link_to post.user.name, user_path(post.user) %>さん</div>
+            <div class="likes-button">
+              <div id="like_buttons_<%= post.id %>">
+              <%= render "likes/index_like", post: post %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="post-area">
+    <div class="inner">
+      <h1 class="post-area-title">新着投稿一覧</h1>
+      <div class="post-list">
+        <% @posts.each do |post| %>
+          <div class="post-box">
+            <% if post.new_arrival? == true %>
+              <%= render 'new_label' %>
+            <% end %>
+            <div class="background-image">
+              <% if post.is_admin_deleted == false %>
+                <%= link_to image_tag(post.images[0].to_s), admin_post_path(post.id) %>
+              <% end %>
+            </div>
+            <% if post.is_admin_deleted == false %>
+              <p class="main-title">「<%= post.main_title %>」</p>
+            <% elsif post.is_admin_deleted == true %>
+              <p class="main-title-deleted"><%= link_to "(deleted)", admin_post_path(post.id) %> </p>
+            <% end %>
+            <p class="post-place"><%= post.location %></p>
+            <% if post.date %>
+              <p class="post-date"><%= post.date.strftime('%Y年%m月%d日') %></p>
+            <% end %>
+            <p class="user-name">投稿者：<%= link_to post.user.name, user_path(post.user) %>さん</p>
+            <div class="post-like" id="like_buttons_<%= post.id %>">
+              <%= render "likes/index_like", post: post %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<!--</main>-->

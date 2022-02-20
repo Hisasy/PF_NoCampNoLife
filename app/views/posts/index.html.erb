@@ -3,9 +3,21 @@
     <div class="full-screen-o slider">
       <% @post_5.each do |post| %>
         <div class="slider-box">
-          <div class="image"><%= link_to image_tag(post.images[0].to_s), post_path(post.id) %></div>
+          <div class="slider-image">
+            <% if post.is_admin_deleted == false %>
+              <%= link_to image_tag(post.images[0].to_s), post_path(post.id) %>
+            <% elsif post.is_admin_deleted == true %>
+              <%= image_tag 'white.png' %>
+            <% end %>
+          </div>
           <div class="post-content">
-            <div class="post-content-main-title">「<%= post.main_title %>」</div>
+            <div class="post-content-main-title">
+              <% if post.is_admin_deleted == false %>
+                「<%= link_to post.main_title , post_path(post.id) %>」
+              <% elsif post.is_admin_deleted == true %>
+                <div class="deleted-main-title"><%= link_to "(deleted)",post_path(post.id) %></div>
+              <% end %>
+            </div>
             <p class="post-content-place"><%= post.location %></p>
             <% if post.date %>
               <div class="post-content-date"><%= post.date.strftime('%Y年%m月%d日') %></div>
@@ -32,9 +44,15 @@
               <%= render 'new_label' %>
             <% end %>
             <div class="background-image">
-              <%= link_to image_tag(post.images[0].to_s), post_path(post.id) %>
+              <% if post.is_admin_deleted == false %>
+                <%= link_to image_tag(post.images[0].to_s), post_path(post.id) %>
+              <% end %>
             </div>
-            <p class="main-title">「<%= post.main_title %>」</p>
+            <% if post.is_admin_deleted == false %>
+              <p class="main-title">「<%= post.main_title %>」</p>
+            <% elsif post.is_admin_deleted == true %>
+              <p class="main-title-deleted"><%= link_to "(deleted)", post_path(post.id) %> </p>
+            <% end %>
             <p class="post-place"><%= post.location %></p>
             <% if post.date %>
               <p class="post-date"><%= post.date.strftime('%Y年%m月%d日') %></p>

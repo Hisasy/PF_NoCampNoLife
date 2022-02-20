@@ -22,6 +22,7 @@
 //= require_tree .
 /*global $*/
 
+// 画像スライダー用
 $(document).on('ready', function() {
   $(".full-screen-o").slick({
     centerMode: true,
@@ -31,5 +32,69 @@ $(document).on('ready', function() {
     autoplaySpeed: 2000,
     speed: 1000,
     infinite: true,
+  });
+});
+
+
+// コメント編集ボタン用
+$(function () {
+  // $(".js-edit-comment-button").on("click", function () {
+  $(document).on("click", ".js-edit-comment-button", function () {
+    const commentId = $(this).data('comment-id');
+    const commentLabelArea = $('#js-comment-label-' + commentId);
+    const commentTextArea = $('#js-textarea-comment-' + commentId);
+    const commentButton = $('#js-comment-button-' + commentId);
+
+    commentLabelArea.hide();
+    commentTextArea.show();
+    commentButton.show();
+  });
+});
+
+// キャンセルボタンクリック時、コメント編集エリア非表示
+$(function () {
+  $(document).on("click", ".comment-cancel-button", function () {
+    const commentId = $(this).data('cancel-id');
+    const commentLabelArea = $('#js-comment-label-' + commentId);
+    const commentTextArea = $('#js-textarea-comment-' + commentId);
+    const commentButton = $('#js-comment-button-' + commentId);
+    const commentError = $('#js-comment-post-error-' + commentId);
+
+    commentLabelArea.show();
+    commentTextArea.hide();
+    commentButton.hide();
+    commentError.hide();
+  });
+});
+
+
+// コメント更新ボタン
+$(function () {
+  $(document).on("click", ".comment-update-button", function () {
+    const commentId = $(this).data('update-id');
+    const textField = $('#js-textarea-comment-' + commentId);
+    const comment_new = textField.val();
+
+    $.ajax({
+      url: '/comments/' + commentId,
+      type: 'PATCH',
+      data: {
+        comment: {
+          comment: comment_new
+        }
+      }
+    })
+    .done(function (data) {
+        const commentLabelArea = $('#js-comment-label-' + commentId);
+        const commentTextArea = $('#js-textarea-comment-' + commentId);
+        const commentButton = $('#js-comment-button-' + commentId);
+        const commentError = $('#js-comment-post-error-' + commentId);
+
+        commentLabelArea.show();
+        commentLabelArea.text(data.comment);
+        commentTextArea.hide();
+        commentButton.hide();
+        commentError.hide();
+      })
   });
 });
