@@ -12,15 +12,28 @@
             <span><%= l comment.created_at, format: :short %></span>
           </p>
         </div>
-        <p class="comment-body"><%= comment.comment %></p>
-        <% if comment.user == current_user %>
-          <div class="comment-delete">
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
-          </div>
+        <!--コメント削除機能-->
+        <% if comment.is_deleted == false %>
+          <% if comment.user == current_user %>
+            <p id="js-comment-label-<%= comment.id %>"><%= comment.comment %></p>
+            <div class="comment-delete">
+              <!--コメント編集機能-->
+              <div data-comment-id=<%= comment.id %> class="js-edit-comment-button">
+                <i class="text-primary">編集</i>
+              </div>
+              <%= render "comments/edit", comment: comment %>
+              <!--コメント削除機能-->
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          <% else %>
+            <p class="comment-body"><%= comment.comment %></p>
+          <% end %>
+        <% elsif comment.is_deleted == true %>
+          <p class="comment-body-deleted">(deleted)</p>
         <% end %>
+
       </div>
     <% end %>
-    <!--</div>-->
   <% else %>
     <div class="no-comment">コメントはまだありません</div>
   <% end %>

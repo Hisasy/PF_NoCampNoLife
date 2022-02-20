@@ -1,0 +1,57 @@
+<div class="post-show">
+  <div class="post-show-header">
+    <p class="post-show-main-title">「 <%= @post.main_title %> 」
+      <span class="post-show-user" ><%= link_to @post.user.name, user_path(@post.user) %>さんの投稿</span>
+    </p>
+    <div class="post-show-place-icon">
+      <div class="place-icon-image"></div>
+      <span class="post-show-place"><%= @post.location %></span>
+      <% if @post.date %>
+        <div class="date-icon-image"></div>
+        <span class="post-show-date"><%= @post.date.strftime('%Y年%m月%d日') %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="post-show-main">
+    <div class="post-show-sub-title"><%= @post.sub_title %></div>
+    <div class="post-show-image-area">
+      <% @post.images.each do |image| %>
+        <div><%= image_tag image.to_s, size: '400x270' %></div>
+      <% end %>
+    </div>
+    <div class="post-show-body-area">
+      <div class="post-show-body-name"><%= link_to @post.user.name, user_path(@post.user) %></div>
+      <!--いいね機能-->
+      <div id="like_buttons_<%= @post.id %>">
+        <%= render "likes/like", post: @post %>
+      </div>
+      <div class="post-show-body"><%= @post.body %></div>
+    </div>
+
+    <div class="buttons">
+      <p class="edit-button">
+        <%= link_to "編集", edit_admin_post_path(@post) %>
+        <span class="delete-button"><%= link_to "削除", admin_post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %></span>
+      </p>
+    </div>
+  </div>
+
+  <!--コメント一覧-->
+  <div class="comment-area">
+    <div id="comments_area">
+      <%= render 'admin/comments/post_comments', post: @post %>
+    </div>
+  <!--コメント編集フォーム-->
+    <div class="new-comment">
+      <% if user_signed_in? %>
+        <%= form_with( model:[post, comment] ) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", :size=>"50x2" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to t("button.back"), "/admin/posts" %>
+</div>
