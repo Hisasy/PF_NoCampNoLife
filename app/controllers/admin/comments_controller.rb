@@ -1,6 +1,7 @@
 class Admin::CommentsController < ApplicationController
 
   before_action :authenticate_admin!
+  before_action :set_comment, only: %i[update]
 
 
   def edit
@@ -10,19 +11,8 @@ class Admin::CommentsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments
-
-    if current_admin
-      @comments.update(is_admin_edited: true)
-      @comments.udpate
-    else
-      @comments.update
-    end
-
-    @comments.update
-    redirect_to admin_post_path(@post)
-
+    @comment.update!(comment_update_params)
+    render json: @comment
   end
 
   def destroy
@@ -34,5 +24,13 @@ class Admin::CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def comment_update_params
+    params.require(:comment).permit(:comment)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end

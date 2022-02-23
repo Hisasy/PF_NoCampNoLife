@@ -15,7 +15,7 @@
         <!--コメント削除機能-->
         <% if comment.is_deleted == false %>
           <% if comment.user == current_user %>
-            <p id="js-comment-label-<%= comment.id %>"><%= comment.comment %></p>
+            <p id="js-comment-label-<%= comment.id %>", class="comment-body"><%= comment.comment %></p>
             <div class="comment-delete">
               <!--コメント編集機能-->
               <div data-comment-id=<%= comment.id %> class="js-edit-comment-button">
