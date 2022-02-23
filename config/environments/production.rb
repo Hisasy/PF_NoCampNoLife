@@ -93,4 +93,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'no-camp-no-life.com', port: 80 }
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domein => "gmail.com",
+    :user_name => ENV["SEND_MAIL"],
+    :password => ENV["GMAIL_SPECIFIC_PASSWORD"],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
