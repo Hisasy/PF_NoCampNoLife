@@ -44,6 +44,10 @@
 - 投稿一覧（画像スライダー）
 - 環境変数化（dotenv-rails）
 - 外部ストレージ導入（AWS S3使用）
+- ---以下2月23日追加---
+- 管理者ログイン機能
+- 管理者による投稿とコメントの編集・削除機能
+- 会員登録時、メール認証機能
 
 機能の詳細は[こちらから](https://docs.google.com/spreadsheets/d/1OdkkPlLWHUi1p8kAkUI4DhZgdOBXfez5NWGoNEY0fGo/edit?usp=sharing)
 
