@@ -77,7 +77,7 @@ $(function () {
     console.log(comment);
 
     $.ajax({
-      url: '/posts/:post_id/comments/' + commentId || '/admin/comments/' + commentId,
+      url: '/admin/comments/' + commentId,
       type: 'PATCH',
       data: {
         comment: {

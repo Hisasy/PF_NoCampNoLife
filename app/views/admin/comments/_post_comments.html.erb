@@ -14,21 +14,19 @@
         </div>
         <!--コメント削除機能-->
         <% if comment.is_deleted == false %>
-          <p class="comment-body"><%= comment.comment %></p>
+          <p id="js-comment-label-<%= comment.id %>", class="comment-body"><%= comment.comment %></p>
           <% if current_admin %>
             <div class="comment-delete">
+              <div data-comment-id=<%= comment.id %> class="js-edit-comment-button">
+                <i class="text-primary">編集</i>
+              </div>
+              <%= render "admin/comments/edit", comment: comment %>
               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
             </div>
           <% end %>
         <% elsif comment.is_deleted == true %>
           <p class="comment-body-deleted">(deleted)</p>
         <% end %>
-
-        <!--コメント編集機能-->
-          <!--<div class="comment-edit">-->
-          <!--  %= link_to "編集", edit_post_comment_path(@comments) %>-->
-          <!--</div>-->
-
       </div>
     <% end %>
     <!--</div>-->

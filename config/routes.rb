@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "users/quit" => "users#quit", as: "users_quit"
   patch "users/out" => "users#out", as: "users_out"
 
+  patch "comments/update" => "comments/update"
+
   resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :edit, :update]
