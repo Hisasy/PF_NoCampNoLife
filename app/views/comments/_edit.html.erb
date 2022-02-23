@@ -1,0 +1,8 @@
+<div id="js-comment-<%= comment.id %>">
+  <p id="js-comment-post-error-<%= comment.id %>" class="text-danger"></p>
+  <textarea style="display: none;" id="js-textarea-comment-<%= comment.id %>" class="form-control comment-post-error"><%= comment.comment %></textarea>
+  <div id="js-comment-button-<%= comment.id %>" style="display: none;">
+    <button data-cancel-id=<%= comment.id %> type="button" class="btn btn-light comment-cancel-button">キャンセル</button>
+    <button data-update-id=<%= comment.id %> type="submit" class="btn btn-success comment-update-button">更新</button>
+  </div>
+</div>

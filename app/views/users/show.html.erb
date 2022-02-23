@@ -57,10 +57,23 @@
       <div class="post-list">
         <% @posts.each do |post| %>
           <div class="post-box">
-            <div class="background-image">
-              <%= link_to image_tag(post.images[0].to_s, size: '300x200'), post_path(post.id) %>
-            </div>
-            <p class="main-title">「<%= post.main_title %>」</p>
+            <% if post.is_admin_deleted == false %>
+              <% if current_admin %>
+                <div class="background-image">
+                  <%= link_to image_tag(post.images[0].to_s, size: '300x200'), admin_post_path(post.id) %>
+                </div>
+              <% else %>
+                <div class="background-image">
+                  <%= link_to image_tag(post.images[0].to_s, size: '300x200'), post_path(post.id) %>
+                </div>
+              <% end %>
+              <p class="main-title">「<%= post.main_title %>」</p>
+            <% elsif post.is_admin_deleted == true %>
+              <div class="background-image-deleted">
+                <!--%= link_to image_tag(post.images[0].to_s, size: '300x200'), post_path(post.id) %>-->
+              </div>
+              <p class="main-title-deleted"><%= link_to "(deleted)", post_path(post.id) %></p>
+            <% end %>
             <p class="post-place"><%= post.location %></p>
             <% if post.date %>
               <p class="post-date"><%= post.date.strftime('%Y年%m月%d日') %></p>

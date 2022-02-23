@@ -175,6 +175,21 @@ background-size: cover;
   border-radius: 4px;
 }
 
+.background-image-deleted {
+  // width: 100%;
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // position: relative;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
+  width: 300px;
+  height: 200px;
+}
+
 .post-date {
   box-sizing: border-box;
   // position: absolute;
@@ -192,6 +207,18 @@ background-size: cover;
   padding: 14px 10px;
   font-weight: 700;
   line-height: 1.5;
+}
+
+.main-title-deleted {
+  background-color: #FFFFDD;
+  padding: 14px 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #808080;
+}
+
+.main-title-deleted a {
+  color: #808080;
 }
 
 .post-place {

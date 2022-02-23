@@ -114,6 +114,11 @@ header {
  margin: 0 30px 0 auto;
 }
 
+.admin-login {
+ font-size: 18px;
+ color: white;
+}
+
 .post-new {
  text-decoration: none;
  margin-right: 3vw;
@@ -276,6 +281,11 @@ footer{
  // background-color: green;
 }
 
+.admin-login {
+ font-size: 9px;
+ color: white;
+}
+
 .header-center {
  // margin-top: -25px;
  text-align: center;
@@ -304,12 +314,13 @@ footer{
  font-size: 2px;
 }
 
-.slick-slide img {
-  width: 100%;
+// .slick-slide img {
+//   width: 70px;
+//   height: 70px;
   // height: ;
   // max-height: 300px;
   // min-height: 100px;
-}
+// }
 
 .sliderArea {
   max-width: 100%;
@@ -323,7 +334,12 @@ footer{
   position: relative;
   box-shadow: 0 0 5px #ccc;
   border: solid #cccccc;
-  height: 300px;
+  height: 250px;
+}
+
+.slider-image {
+ width: 100%;
+ height: 70px;
 }
 
 // .slider-box {
@@ -339,6 +355,7 @@ footer{
   font-weight: 700;
   line-height: 1.5;
   font-size: 5px;
+  height: 50px
 }
 
 .post-content-date {
@@ -354,7 +371,7 @@ footer{
   font-size: 6px;
   font-weight: 700;
   padding-left: 5px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .post-content-user {
@@ -379,6 +396,7 @@ footer{
   margin-bottom: 120px;
   background: #f7f7f7;
   min-height: 1000px;
+  margin-top: 20px;
 
 }
 
@@ -426,6 +444,14 @@ footer{
   font-size: 10px;
 }
 
+.main-title-deleted {
+ background-color: #FFFFDD;
+  padding: 14px 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 10px;
+}
+
 .post-place {
   padding: 0 10px 0 10px;
   font-size: 8px;
@@ -459,6 +485,14 @@ footer{
 .user-name a {
   color: #666;
   font-weight: 700;
+}
+
+.background-image {
+ height: 100px;
+}
+
+.background-image-deleted {
+ height: 100px;
 }
 
 
@@ -751,6 +785,5 @@ background-size: cover;
   margin-top: 10px;
   font-size: 20px;
 }
-
 
 }

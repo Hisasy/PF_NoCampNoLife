@@ -1,0 +1,36 @@
+<div class="comment-area">
+  <% if post.comments.present? %>
+    <!--<p>コメント件数：%= post.comments.count %></p>-->
+    <!--<div class="comment-box">-->
+    <% post.comments.each do |comment| %>
+      <div class="comment-card">
+        <div class="comment-icon">
+          <div class="icon-image"></div>
+        </div>
+        <div class="comment-user-profile">
+          <p><%= comment.user.name %>
+            <span><%= l comment.created_at, format: :short %></span>
+          </p>
+        </div>
+        <!--コメント削除機能-->
+        <% if comment.is_deleted == false %>
+          <p id="js-comment-label-<%= comment.id %>", class="comment-body"><%= comment.comment %></p>
+          <% if current_admin %>
+            <div class="comment-delete">
+              <div data-comment-id=<%= comment.id %> class="js-edit-comment-button">
+                <i class="text-primary">編集</i>
+              </div>
+              <%= render "admin/comments/edit", comment: comment %>
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          <% end %>
+        <% elsif comment.is_deleted == true %>
+          <p class="comment-body-deleted">(deleted)</p>
+        <% end %>
+      </div>
+    <% end %>
+    <!--</div>-->
+  <% else %>
+    <div class="no-comment">コメントはまだありません</div>
+  <% end %>
+</div>
